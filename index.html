@@ -1,138 +1,45 @@
-
-html
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <title>Mein Spiel</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      height: 100%;
-    }
-    
-    h1 {
-      color: #333;
-      text-align: center;
-    }
-    
-    #game-container {
-      display: grid;
-      grid-template-rows: repeat(2, 50%);
-      grid-template-columns: repeat(2, 50%);
-      width: 100%;
-      height: 100%;
-      background-color: #fff;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Live Voting</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tribes = ['Volk 1', 'Volk 2', 'Volk 3', 'Volk 4'];
+            const votes = [0, 0, 0, 0];
 
-    .civilization-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-    
-    .civilization-image {
-      width: 50px;
-      height: 50px;
-      object-fit: cover;
-    }
-    
-    .civilization-1 {
-      background-color: #FF0000;
-      color: #FFF;
-    }
-    
-    .civilization-2 {
-      background-color: #00FF00;
-      color: #000;
-    }
-    
-    .civilization-3 {
-      background-color: #0000FF;
-      color: #FFF;
-    }
-    
-    .civilization-4 {
-      background-color: #FFFF00;
-      color: #000;
-    }
+            const socket = io.connect('http://localhost:8081');
 
-    .votes {
-      position: absolute;
-      bottom: 10px;
-      font-size: 20px;
-    }
-  </style>
+            socket.on('message', function (data) {
+                console.log(data);
+                const vote = parseInt(data.message.trim());
+                if (vote >= 1 && vote <= 4) {
+                    votes[vote - 1]++;
+                    updateResults();
+                }
+            });
+
+            function updateResults() {
+                const resultsContainer = document.getElementById('results');
+                resultsContainer.innerHTML = '';
+                for (let i = 0; i < tribes.length; i++) {
+                    const tribe = tribes[i];
+                    const voteCount = votes[i];
+                    const resultString = `${tribe}: ${voteCount} Stimmen<br>`;
+                    resultsContainer.innerHTML += resultString;
+                }
+            }
+
+            // Initialer Aufruf um die Stimmen auf 0 zu setzen
+            updateResults();
+        });
+    </script>
 </head>
 <body>
-  <h1>Mein Spiel</h1>
-  
-  <div id="game-container">
-    <div class="civilization-container civilization-1">
-      <img class="civilization-image" src="https://media.giphy.com/media/Q6xuxUhCgCNpsbfhaP/giphy.gif" alt="Volk 1">
-      <span>Volk 1 (Marokko)</span>
-      <div class="votes" id="votes-1">0</div>
-    </div>
-    <div class="civilization-container civilization-2">
-      <img class="civilization-image" src="https://media.giphy.com/media/8FuZarvdqJQNxK2rJj/giphy.gif" alt="Volk 2">
-      <span>Volk 2 (Deutschland)</span>
-      <div class="votes" id="votes-2">0</div>
-    </div>
-    <div class="civilization-container civilization-3">
-      <img class="civilization-image" src="https://media.giphy.com/media/MBxjx8okq3WfilCHkP/giphy.gif" alt="Volk 3">
-      <span>Volk 3 (Canada)</span>
-      <div class="votes" id
-
-="votes-3">0</div>
-    </div>
-    <div class="civilization-container civilization-4">
-      <img class="civilization-image" src="https://media.giphy.com/media/Rgzsg3GjZJbj3Xt8Vp/giphy.gif" alt="Volk 4">
-      <span>Volk 4 (Japan)</span>
-      <div class="votes" id="votes-4">0</div>
-    </div>
-  </div>
-
-  <script src="https://cdn.socket.io/4.4.0/socket.io.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const socket = io('https://dein-server-url'); // Ersetze 'https://dein-server-url' mit der URL deines Servers
-      const voteCounters = {
-        '1': document.getElementById('votes-1'),
-        '2': document.getElementById('votes-2'),
-        '3': document.getElementById('votes-3'),
-        '4': document.getElementById('votes-4')
-      };
-      
-      let votes = {
-        '1': 0,
-        '2': 0,
-        '3': 0,
-        '4': 0
-      };
-      
-      socket.on('connect', () => {
-        console.log('Mit dem Server verbunden');
-      });
-      
-      socket.on('message', (data) => {
-        const vote = data.trim();
-        if (votes.hasOwnProperty(vote)) {
-          votes[vote]++;
-          voteCounters[vote].textContent = votes[vote];
-        }
-      });
-      
-      // optional: sende die Stimmen in regelmäßigen Abständen an den Server
-      setInterval(() => {
-        socket.emit('votes', votes);
-      }, 5000); // alle 5 Sekunden
-    });
-  </script>
+    <h1>TikTok Live Voting Spiel</h1>
+    <p>Stimme für dein Volk! Schreibe 1, 2, 3 oder 4 in die Kommentare.</p>
+    <div id="results"></div>
 </body>
 </html>
