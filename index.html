@@ -31,39 +31,12 @@
       display: block;
       padding: 5px;
       font-size: 16px;
-      text-align: center;
     }
     
-    .civilization-button {
+    button {
       padding: 10px 20px;
       font-size: 16px;
       margin: 5px;
-      display: block;
-      width: 200px;
-      margin: 10px auto;
-      text-align: center;
-      cursor: pointer;
-    }
-    
-    /* Stile für jedes Volk */
-    #civilization-1 {
-      background-color: #FF0000;
-      color: #FFF;
-    }
-    
-    #civilization-2 {
-      background-color: #00FF00;
-      color: #000;
-    }
-    
-    #civilization-3 {
-      background-color: #0000FF;
-      color: #FFF;
-    }
-    
-    #civilization-4 {
-      background-color: #FFFF00;
-      color: #000;
     }
   </style>
 </head>
@@ -71,17 +44,25 @@
   <h1>Mein Spiel</h1>
   
   <div id="game-container">
-    <!-- Hier wird das Spiel angezeigt -->
+    <div class="civilization-container civilization-1">
+      <img class="civilization-image" src="https://media.giphy.com/media/Q6xuxUhCgCNpsbfhaP/giphy.gif" alt="Volk 1">
+      <span class="civilization-name">Volk 1 (Marokko)</span>
+    </div>
+    <div class="civilization-container civilization-2">
+      <img class="civilization-image" src="https://media.giphy.com/media/8FuZarvdqJQNxK2rJj/giphy.gif" alt="Volk 2">
+      <span class="civilization-name">Volk 2 (Deutschland)</span>
+    </div>
+    <div class="civilization-container civilization-3">
+      <img class="civilization-image" src="https://media.giphy.com/media/MBxjx8okq3WfilCHkP/giphy.gif" alt="Volk 3">
+      <span class="civilization-name">Volk 3 (Canada)</span>
+    </div>
+    <div class="civilization-container civilization-4">
+      <img class="civilization-image" src="https://media.giphy.com/media/xT8qBmamiB4mFbSu4M/giphy.gif" alt="Volk 4">
+      <span class="civilization-name">Volk 4 (Russland)</span>
+    </div>
   </div>
   
   <input id="commandInput" type="text" placeholder="Befehl eingeben..." autofocus />
-  
-  <div id="civilization-buttons">
-    <button class="civilization-button" onclick="sendMessage(1)">Zivilisation 1</button>
-    <button class="civilization-button" onclick="sendMessage(2)">Zivilisation 2</button>
-    <button class="civilization-button" onclick="sendMessage(3)">Zivilisation 3</button>
-    <button class="civilization-button" onclick="sendMessage(4)">Zivilisation 4</button>
-  </div>
   
   <script src="https://cdn.socket.io/4.3.1/socket.io.min.js"></script>
   <script>
@@ -104,17 +85,7 @@
     
     commandInput.addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
-        const command = commandInput.value.toLowerCase().trim();
-        processCommand(command);
-        commandInput.value = '';
-        sendMessage(command);
-      }
-    });
-
-    function processCommand(command) {
-      if (command === '1') {
-        // Befehl für Volk 1
-       Hier ist der überarbeitete HTML-Code mit den gewünschten Änderungen:
+        const command = commandIch sehe, dass du den Code bereits aktualisiert hast. Hier ist der ursprüngliche Code mit den aktualisierten Bildern für jedes Volk:
 
 ```html
 <!DOCTYPE html>
@@ -150,37 +121,44 @@
       display: block;
       padding: 5px;
       font-size: 16px;
-      text-align: center;
     }
     
-    .civilization-button {
+    button {
       padding: 10px 20px;
       font-size: 16px;
       margin: 5px;
-      display: block;
-      width: 200px;
-      margin: 10px auto;
-      text-align: center;
-      cursor: pointer;
     }
     
-    /* Stile für jedes Volk */
-    #civilization-1 {
+    .civilization-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .civilization-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    .civilization-1 {
       background-color: #FF0000;
       color: #FFF;
     }
     
-    #civilization-2 {
+    .civilization-2 {
       background-color: #00FF00;
       color: #000;
     }
     
-    #civilization-3 {
+    .civilization-3 {
       background-color: #0000FF;
       color: #FFF;
     }
     
-    #civilization-4 {
+    .civilization-4 {
       background-color: #FFFF00;
       color: #000;
     }
@@ -190,17 +168,334 @@
   <h1>Mein Spiel</h1>
   
   <div id="game-container">
-    <!-- Hier wird das Spiel angezeigt -->
+    <div class="civilization-container civilization-1">
+      <img class="civilization-image" src="https://media.giphy.com/media/Q6xuxUhCgCNpsbfhaP/giphy.gif" alt="Volk 1">
+      <span>Volk 1 (Marokko)</span>
+    </div>
+    <div class="civilization-container civilization-2">
+      <img class="civilization-image" src="https://media.giphy.com/media/8FuZarvdqJQNxK2rJj/giphy.gif" alt="Volk 2">
+      <span>Volk 2 (Deutschland)</span>
+    </div>
+    <div class="civilization-container civilization-3">
+      <img class="civilization-image" src="https://media.giphy.com/media/MBxjx8okq3WfilCHkP/giphy.gif" alt="Volk 3">
+      <span>Volk 3 (Canada)</span>
+    </div>
+    <div class="civilization-container civilization-4">
+      <img class="civilization-image" src="https://media.giphy.com/media/xT8qBmamiB4mFbSu4M/giphy.gif" alt="Volk 4">
+      <span>Volk 4 (Russland)</span>
+    </div>
   </div>
   
   <input id="commandInput" type="text" placeholder="Befehl eingeben..." autofocus />
   
-  <div id="civilization-buttons">
-    <button class="civilization-button" onclick="sendMessage(1)">Zivilisation 1</button>
-    <button class="civilization-button" onclick="sendMessage(2)">Zivilisation 2</button>
-    <button class="civilization-button" onclick="sendMessage(3)">Zivilisation 3</button>
-    <button class="civilization-button" onclick="sendMessage(4)">Zivilisation 4</button>
+  <script srcHier ist der aktualisierte HTML-Code mit den neuen Bildern für jedes Volk:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mein Spiel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+    
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    
+    #game-container {
+      width: 400px;
+      height: 300px;
+      background-color: #fff;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    #commandInput {
+      width: 300px;
+      height: 30px;
+      margin: 20px auto;
+      display: block;
+      padding: 5px;
+      font-size: 16px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    
+    .civilization-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .civilization-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    .civilization-1 {
+      background-color: #FF0000;
+      color: #FFF;
+    }
+    
+    .civilization-2 {
+      background-color: #00FF00;
+      color: #000;
+    }
+    
+    .civilization-3 {
+      background-color: #0000FF;
+      color: #FFF;
+    }
+    
+    .civilization-4 {
+      background-color: #FFFF00;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mein Spiel</h1>
+  
+  <div id="game-container">
+    <div class="civilization-container civilization-1">
+      <img class="civilization-image" src="https://media.giphy.com/media/Q6xuxUhCgCNpsbfhaP/giphy.gif" alt="Volk 1">
+      <span>Volk 1 (Marokko)</span>
+    </div>
+    <div class="civilization-container civilization-2">
+      <img class="civilization-image" src="https://media.giphy.com/media/8FuZarvdqJQNxK2rJj/giphy.gif" alt="Volk 2">
+      <span>Volk 2 (Deutschland)</span>
+    </div>
+    <div class="civilization-container civilization-3">
+      <img class="civilization-image" src="https://media.giphy.com/media/MBxjx8okq3WfilCHkP/giphy.gif" alt="Volk 3">
+      <span>Volk 3 (Canada)</span>
+    </div>
+    <div class="civilization-container civilization-4">
+      <img class="civilization-image" src="https://media.giphy.com/media/xT8qBmamiB4mFbSu4M/giphy.gif" alt="Volk 4">
+      <span>Volk 4 (Russland)</span>
+    </div>
   </div>
+  
+  <input id="commandInput" type="text" placeholder="Befehl eingeben..." autofocus />
+  
+  <script src="https://cdn.socket.io/4.3.1/socket.io.minEs scheint, dass der Code abgeschnitten wurde. Hier ist der aktualisierte Code mit den neuen Bildern und dem schwarzen Hintergrund:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mein Spiel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+    }
+    
+    h1 {
+      color: #FFF;
+      text-align: center;
+    }
+    
+    #game-container {
+      width: 400px;
+      height: 300px;
+      background-color: #FFF;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    #commandInput {
+      width: 300px;
+      height: 30px;
+      margin: 20px auto;
+      display: block;
+      padding: 5px;
+      font-size: 16px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    
+    .civilization-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .civilization-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    .civilization-1 {
+      background-color: #FF0000;
+      color: #FFF;
+    }
+    
+    .civilization-2 {
+      background-color: #00FF00;
+      color: #000;
+    }
+    
+    .civilization-3 {
+      background-color: #0000FF;
+      color: #FFF;
+    }
+    
+    .civilization-4 {
+      background-color: #FFFF00;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mein Spiel</h1>
+  
+  <div id="game-container">
+    <div class="civilization-container civilization-1">
+      <img class="civilization-image" src="https://media.giphy.com/media/Q6xuxUhCgCNpsbfhaP/giphy.gif" alt="Volk 1">
+      <span>Volk 1 (Marokko)</span>
+    </div>
+    <div class="civilization-container civilization-2">
+      <img class="civilization-image" src="https://media.giphy.com/media/8FuZarvdqJQNxK2rJj/giphy.gif" alt="Volk 2">
+      <span>Volk 2 (Deutschland)</span>
+    </div>
+    <div class="civilization-container civilization-3">
+      <img class="civilization-image" src="https://media.giphy.com/media/MBxjx8okq3WfilCHkP/giphy.gif" alt="Volk 3">
+      <span>Volk 3 (Canada)</span>
+    </div>
+    <div class="civilization-container civilization-4">
+      <img class="civilization-image" src="https://media.giphy.com/media/xT8qBmamiB4mFbSu4M/giphy.gif" alt="Volk 4">
+      <span>Volk 4 (Russland)</span>
+    </div>
+  </div>
+  
+  <input id="commandInput" type="text" placeholder="Befehl eingeben..." autofocus />
+  
+  <script src="https://cdn.socket.ioEntschuldigung für die Verwirrung. Hier ist der vollständige und aktualisierte Code mit den neuen Bildern und dem schwarzen Hintergrund:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mein Spiel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+    }
+    
+    h1 {
+      color: #FFF;
+      text-align: center;
+    }
+    
+    #game-container {
+      width: 400px;
+      height: 300px;
+      background-color: #FFF;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    #commandInput {
+      width: 300px;
+      height: 30px;
+      margin: 20px auto;
+      display: block;
+      padding: 5px;
+      font-size: 16px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    
+    .civilization-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .civilization-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    .civilization-1 {
+      background-color: #FF0000;
+      color: #FFF;
+    }
+    
+    .civilization-2 {
+      background-color: #00FF00;
+      color: #000;
+    }
+    
+    .civilization-3 {
+      background-color: #0000FF;
+      color: #FFF;
+    }
+    
+    .civilization-4 {
+      background-color: #FFFF00;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mein Spiel</h1>
+  
+  <div id="game-container">
+    <div class="civilization-container civilization-1">
+      <img class="civilization-image" src="https://media.giphy.com/media/Q6xuxUhCgCNpsbfhaP/giphy.gif" alt="Volk 1">
+      <span>Volk 1 (Marokko)</span>
+    </div>
+    <div class="civilization-container civilization-2">
+      <img class="civilization-image" src="https://media.giphy.com/media/8FuZarvdqJQNxK2rJj/giphy.gif" alt="Volk 2">
+      <span>Volk 2 (Deutschland)</span>
+    </div>
+    <div class="civilization-container civilization-3">
+      <img class="civilization-image" src="https://media.giphy.com/media/MBxjx8okq3WfilCHkP/giphy.gif" alt="Volk 3">
+      <span>Volk 3 (Canada)</span>
+    </div>
+    <div class="civilization-container civilization-4">
+      <img class="civilization-image" src="https://media.giphy.com/media/xT8qBmamiB4mFbSu4M/giphy.gif" alt="Volk 4">
+      <span>Volk 4 (Russland)</span>
+    </div>
+  </div>
+  
+  <input id="commandInput" type="text" placeholder="Befehl eingeben..." autofocus />
   
   <script src="https://cdn.socket.io/4.3.1/socket.io.min.js"></script>
   <script>
@@ -233,7 +528,6 @@
     function processCommand(command) {
       if (command === '1') {
         // Befehl für Volk 1
-       ```html
         console.log('Befehl für Volk 1 ausgeführt');
       } else if (command === '2') {
         // Befehl für Volk 2
